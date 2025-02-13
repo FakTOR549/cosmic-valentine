@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -5,45 +6,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <title>Астрологическое предсказание на 14 февраля</title>
   <style>
-    /* Сбросим отступы и настроим тело страницы */
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: Arial, sans-serif;
-    }
+/* ======================== Общие стили для страницы ======================== */
 
-    /* Контейнер для видео */
-    .video-background {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: -1; /* Видео будет позади других элементов */
-    }
+/* Сбросим отступы и настроим тело страницы */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
 
-    .video-background video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover; /* Видео будет обрезано, чтобы заполнить весь экран, сохраняя пропорции */
-    }
+/* ======================== Видео и фон ======================== */
 
-    /* Прозрачный градиентный фон поверх видео */
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(75, 0, 130, 0.7)); /* Фиолетово-черный градиент */
-      z-index: 0; /* Прозрачный блок будет поверх видео */
-    }
+/* Контейнер для видео */
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1; /* Видео будет позади других элементов */
+}
 
+/* Видео внутри контейнера */
+.video-background video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Видео будет обрезано, чтобы заполнить весь экран, сохраняя пропорции */
+}
+
+/* Прозрачный градиентный фон поверх видео */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(75, 0, 130, 0.7)); /* Фиолетово-черный градиент */
+  z-index: 0; /* Прозрачный блок будет поверх видео */
+}
+
+
+/* ======================== Колесо фортуны ======================== */
 	/* Стиль для контейнера колеса */
 	.wheel-container {
 	  position: absolute;
@@ -63,285 +71,702 @@
 	  height: 100%; /* Колесо теперь будет занимать 100% от высоты контейнера */
 	  transform-origin: center center; /* Центр вращения */
 	  transition: transform 4s ease-out; /* Плавное вращение */
+	  transition: transform 4s ease-out, box-shadow 1s ease-in-out; /* Плавное вращение и тень */
+	   box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Легкое свечение вокруг колеса */
+	   z-index: -3; /* Свечение будет позади колеса */
 	}
 
+	/* Эффект вращения при клике */
+	#zodiacWheel.spin {
+	  transform: rotate(360deg); /* Вращение колеса */
+	  box-shadow: 0 0 40px rgba(255, 255, 255, 1); /* Увеличиваем свечение при вращении */
+	}
 
-
-
-/* Стили для стрелки */
-.arrow {
-  position: relative;
-  width: 0;
-  height: 0;
-  border-left: 30px solid transparent; /* Слева прозрачные границы */
-  border-right: 30px solid transparent; /* Справа прозрачные границы */
-  border-bottom: 80px solid #522e7c; /* Нижняя часть стрелки — основной цвет */
-  margin: 0 auto;
-  transition: all 0.3s ease; /* Плавный переход при наведении */
-}
-
-/* Эффект при наведении на стрелку */
-.arrow:hover {
-  border-bottom-color: #6a47d3; /* Цвет стрелки меняется на другой оттенок фиолетового */
-  transform: scale(1.1); /* Легкое увеличение стрелки при наведении */
-}
-
-/* Стили для анимации градиента */
-.arrow {
-  background: linear-gradient(135deg, #522e7c, #6a47d3); /* Градиент от #522e7c до #6a47d3 */
-  border-bottom: 80px solid transparent; /* Убираем однотонный цвет для нижней части */
-  border-image: linear-gradient(135deg, #522e7c, #6a47d3) 1; /* Применяем градиент для бордеров */
-}
-
-.arrow:hover {
-  background: linear-gradient(135deg, #6a47d3, #522e7c); /* Изменение градиента при наведении */
-}
-
-
-
-
-
-
-/* Стили для кнопки "Крутить колесо" */
-.spin-button {
-  margin-top: 20px;
-  padding: 14px 50px; /* Делаем кнопку длиннее */
-  background: linear-gradient(135deg, #3a0d5e, #6a1dd3); /* Фиолетовый градиент */
-  color: white;
-  border: 2px solid rgba(255, 255, 255, 0.3); /* Полупрозрачная обводка */
-  border-radius: 30px; /* Закруглённые углы */
-  font-size: 18px;
-  font-weight: bold; /* Делаем текст жирным */
-  text-transform: uppercase; /* Делаем текст заглавными буквами */
-  cursor: pointer;
-  box-shadow: 0 4px 20px rgba(130, 46, 150, 0.6); /* Фиолетовое свечение */
-  transition: all 0.3s ease;
-}
-
-.spin-button:hover {
-  background: linear-gradient(135deg, #6a1dd3, #3a0d5e);
-  transform: scale(1.05);
-  box-shadow: 0 6px 25px rgba(130, 46, 150, 0.8);
-}
-
-.spin-button:active {
-  transform: scale(0.98);
-}
-
-.spin-button:focus {
-  outline: none;
-}
-
-}
-
-
-
-
-
-    /* Стиль для блока с рамкой и прозрачностью */
-    .card {
-      position: absolute;
-      top: 50%; /* Размещаем блок по центру по вертикали */
-      left: 50%; /* Размещаем блок по центру по горизонтали */
-      transform: translate(-50%, -50%); /* Центрируем блок точно в центре окна (сдвигаем на 50% его ширины и высоты) */
-      padding: 340px 280px; /* Верхний и нижний отступы по 150px, по бокам 180px */
-      width: 80%; /* Ширина блока будет составлять 80% от ширины экрана */
-      max-width: 900px; /* Максимальная ширина блока 900px */
-      background: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный фон */
-      border: 1px solid rgba(75, 0, 130, 0.8); /* Фиолетовая рамка */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Легкая тень вокруг блока для выделения */
-      border-radius: 10px; /* Скругляем углы блока */
-      text-align: center; /* Выравниваем текст по центру */
-      color: #fff; /* Белый цвет текста, чтобы выделялся на темном фоне */
-      z-index: 1; /* Блок будет располагаться выше фона (видео) */
-    }
-
-    /* Контейнер для текста слева */
-    .text-container {
-      position: absolute;
-      top: 50%;
-      left: 10%; /* Смещаем текст влево */
-      transform: translateY(-50%); /* Центрируем по вертикали */
-      color: white;
-      font-family: Arial, sans-serif;
-      text-align: left;
-      padding: 20px;
-      width: 250px; /* Ширина блока текста */
-    }
-
-    /* Стиль для заголовка */
-    .text-container h1 {
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-
-    /* Стиль для параграфа */
-    .text-container p {
-      font-size: 16px;
-      line-height: 1.5;
-      margin-bottom: 20px;
-    }
-
-    /* Стили для кнопки Узнать судьбу */
-    .romantic-button {
-      padding: 12px 24px;
-      background-color: #ff8c00;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-      margin-bottom: 15px;
-    }
-
-    .romantic-button:hover {
-      background-color: #e67e00;
-    }
-	
-	.text-container {
+	/* Стили для свечений */
+	.glow-box {
 	  position: absolute;
-	  top: 50%;
-	  transform: translateY(-50%);
-	  color: white;
-	  text-align: left;
-	  font-size: 18px;
+	  top: 41%; /* Позиционируем контейнер по вертикали в центре */
+	  left: 50%; /* Смещаем контейнер вправо (чем больше число, тем дальше вправо) */
+	  transform: translate(-50%, -50%); /* Центрируем контейнер относительно его собственного центра */
+	  width: 400px; /* Уменьшаем ширину колеса */
+	  height: 400px; /* Уменьшаем высоту колеса */
+	  background-color: transparent; /* Убираем заливку */
+	  border-radius: 5px; /* Скругленные углы */
+	  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Легкое свечение */
+	  z-index: -1; /* Свечение будет позади колеса */
+	  
 	}
 
-		
-	/* Стиль для модального окна */
-	.modal {
-	  display: none; /* Изначально скрыто */
+	.glow-box2 {
+	  position: absolute;
+	  top: 41%; /* Позиционируем контейнер по вертикали в центре */
+	  left: 50%; /* Смещаем контейнер вправо (чем больше число, тем дальше вправо) */
+	  transform: translate(-50%, -50%) rotate(50deg); /* Центрируем и наклоняем на 15 градусов */
+	  width: 400px; /* Уменьшаем ширину колеса */
+	  height: 400px; /* Уменьшаем высоту колеса */
+	  background-color: transparent; /* Убираем заливку */
+	  border-radius: 5px; /* Скругленные углы */
+	  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Легкое свечение */
+	  z-index: -1; /* Свечение будет позади колеса */
+	  
+	}
+
+/* ======================== Стрелка ======================== */
+
+	/* Стиль для стрелки */
+    .arrow {
+      position: absolute;
+      top: 42%;
+      left: -160px; /* Позиционируем стрелку слева от колеса */
+      transform: translateY(-50%) rotate(360deg); /* Поворачиваем стрелку, чтобы она смотрела в сторону 345° */
+      width: 120px; /* Увеличиваем ширину стрелки */
+      height: 50px; /* Увеличиваем высоту стрелки */
+	  opacity: 0.9; /* Делаем стрелку чуть прозрачной */
+	  z-index: -2; /* Свечение будет позади колеса */
+    }
+
+/* ======================== Кнопка "Крутить колесо" ======================== */
+
+	/* Стили для кнопки "Крутить колесо" */
+	.spin-button {
+	  margin-top: 20px; /* Отступ сверху для кнопки, чтобы она была ниже колеса */
+	  padding: 14px 40px; /* Увеличиваем размер кнопки для длины */
+	  background: linear-gradient(135deg, #522e7c, #6a47d3, #522e7c); /* Градиент с использованием цвета #522E7C */
+	  color: white;
+	  border: none;
+	  border-radius: 50px; /* Закругленные углы */
+	  font-size: 18px; /* Увеличиваем шрифт для лучшего восприятия */
+	  cursor: pointer;
+	  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Тень для выделения кнопки */
+	  transition: background 0.3s ease, transform 0.3s ease; /* Плавные переходы */
+	  opacity: 0.7; /* Делаем стрелку чуть прозрачной */
+	}
+
+	/* Эффект при наведении на кнопку */
+	.spin-button:hover {
+	  background: linear-gradient(135deg, #6a47d3, #522e7c, #6a47d3); /* Изменение градиента при наведении */
+	  transform: scale(1.05); /* Легкое увеличение кнопки при наведении */
+	}
+
+	.spin-button:focus {
+	  outline: none; /* Убираем контур при фокусе */
+	}
+
+/* ======================== Модальное окно колеса фортуны ======================== */
+
+	/* Модальное окно */
+	.modalfortyna {
+	  display: none; /* Скрыто по умолчанию */
 	  position: fixed;
-	  top: 0;
+	  z-index: 1; /* Оно будет поверх остальных элементов */
 	  left: 0;
+	  top: 0;
 	  width: 100%;
 	  height: 100%;
-	  background: rgba(0, 0, 0, 0.7); /* Полупрозрачный фон */
-	  z-index: 2; /* Окно будет поверх остальных элементов */
 	  justify-content: center;
 	  align-items: center;
+	  text-align: center;
+	  padding-top: 50px;
+	  opacity: 0; /* Начальная невидимость */
+	  animation: fadeIn 0.6s forwards; /* Плавное появление окна */
+	  background-color: rgba(0, 0, 0, 0); /* Убираем полупрозрачный фон */
 	}
 
-	/* Стиль для содержимого модального окна */
-	.modal-content {
-	  background-color: #fff;
-	  padding: 20px;
+	/* Эффект появления окна */
+	@keyframes fadeIn {
+	  0% {
+		opacity: 0;
+		transform: scale(0.7); /* Окно появляется маленьким */
+	  }
+	  100% {
+		opacity: 1;
+		transform: scale(1); /* Окно становится нормальным */
+	  }
+	}
+
+	/* Содержание модального окна */
+	.modalfortyna-content {
+	  background: linear-gradient(135deg, #522e7c, #6a47d3); /* Градиент как у кнопки */
+	  margin: auto;
+	  padding: 25px; /* Увеличиваем отступы */
+	  border: 1px solid #888;
+	  width: 90%; /* Ширина чуть больше */
+	  max-width: 350px; /* Увеличиваем максимальную ширину */
 	  border-radius: 10px;
 	  text-align: center;
-	  width: 300px; /* Ширина окна */
+	  position: relative;
+	  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Тень для окна */
+	  animation: shineEffect 2s infinite alternate; /* Переливание */
 	}
 
-	/* Стиль для крестика для закрытия окна */
-	.close {
-	  color: #aaa;
-	  font-size: 28px;
+	/* Эффект переливания содержимого */
+	@keyframes shineEffect {
+	  0% {
+		background: linear-gradient(135deg, #522e7c, #6a47d3);
+	  }
+	  100% {
+		background: linear-gradient(135deg, #6a47d3, #522e7c);
+	  }
+	}
+
+	/* Кнопка закрытия */
+	.closemodalfortyna {
+	  color: #fff;
+	  font-size: 30px;
 	  font-weight: bold;
 	  position: absolute;
-	  top: 5px;
-	  right: 5px;
+	  top: 10px;
+	  right: 10px;
 	  cursor: pointer;
+	  transition: transform 0.3s ease;
 	}
 
-	.close:hover,
-	.close:focus {
-	  color: black;
-	  text-decoration: none;
-	  cursor: pointer;
+	.closemodalfortyna:hover,
+	.closemodalfortyna:focus {
+	  color: #f1f1f1;
+	  transform: scale(1.1); /* Увеличиваем кнопку при наведении */
 	}
+
+	/* Добавление эффекта звездочек */
+	.modalfortyna .stars {
+	  position: absolute;
+	  top: -20px;
+	  left: -20px;
+	  right: -20px;
+	  bottom: -20px;
+	  pointer-events: none;
+	  z-index: -1;
+	}
+
+	.stars::before {
+	  content: "";
+	  position: absolute;
+	  width: 100%;
+	  height: 100%;
+	  background: url('stars.png') repeat;
+	  animation: starBurst 1.5s infinite;
+	}
+
+	/* Эффект появления звезд */
+	@keyframes starBurst {
+	  0% {
+		transform: scale(1);
+		opacity: 0.5;
+	  }
+	  100% {
+		transform: scale(1.2);
+		opacity: 1;
+	  }
+	}
+
+/* ======================== Карточка с текстом ======================== */
+
+	/* Стиль для блока с рамкой и прозрачностью */
+	.card {
+	  position: absolute;
+	  top: 50%; /* Размещаем блок по центру по вертикали */
+	  left: 50%; /* Размещаем блок по центру по горизонтали */
+	  transform: translate(-50%, -50%); /* Центрируем блок точно в центре окна (сдвигаем на 50% его ширины и высоты) */
+	  padding: 340px 280px; /* Верхний и нижний отступы по 150px, по бокам 180px */
+	  width: 80%; /* Ширина блока будет составлять 80% от ширины экрана */
+	  max-width: 900px; /* Максимальная ширина блока 900px */
+	  background: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный фон */
+	  border: 1px solid rgba(75, 0, 130, 0.8); /* Фиолетовая рамка */
+	  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Легкая тень вокруг блока для выделения */
+	  border-radius: 10px; /* Скругляем углы блока */
+	  text-align: center; /* Выравниваем текст по центру */
+	  color: #fff; /* Белый цвет текста, чтобы выделялся на темном фоне */
+	  z-index: 1; /* Блок будет располагаться выше фона (видео) */
+	}
+
+
+/* ======================== Текст Судьбы ======================== */
+
+	/* Контейнер для текста слева от колеса */
+	.text-container {
+	  position: absolute;
+	  top: 45%;
+	  left: 10%; /* Смещаем текст влево */
+	  transform: translateY(-50%); /* Центрируем по вертикали */
+	  color: white;
+	  font-family: Arial, sans-serif;
+	  text-align: left;
+	  padding: -10px;
+	  width: 500px; /* Ширина блока текста */
+	}
+
+	/* Стиль для заголовка */
+	.text-container h1 {
+	  font-size: 40px; /* Увеличиваем размер шрифта */
+	  font-weight: bold; /* Сделаем жирным */
+	  background: linear-gradient(135deg, #522e7c, #6a47d3, #522e7c); /* Градиентный фон для текста */
+	  -webkit-background-clip: text; /* Используем для текста градиент */
+	  color: transparent; /* Текст становится прозрачным, а градиент заполняет его */
+	  margin-bottom: 10px;
+	  text-transform: uppercase; /* Все буквы большие */
+	  letter-spacing: 2px; /* Расстояние между буквами */
+	  transition: transform 0.3s ease, color 0.3s ease; /* Плавный переход при наведении */
+	}
+
+	/* Эффект при наведении на заголовок */
+	.text-container h1:hover {
+	  transform: scale(1.1); /* Увеличиваем заголовок при наведении */
+	  color: white; /* Текст становится белым */
+	}
+
+	/* Стиль для параграфа */
+	.text-container p {
+	  font-size: 16px; /* Исправили на правильный размер */
+	  line-height: 1.5;
+	  margin-bottom: 20px;
+	  color: white; /* Начальный белый цвет для параграфа */
+	  transition: background 0.3s ease, color 0.3s ease; /* Плавный переход для параграфа */
+	}
+
+
+/* ======================== Кнопка "Узнать судьбу" ======================== */
+
+	/* Стили для кнопки "Узнать судьбу" */
+	.romantic-button {
+	  margin-top: 20px; /* Отступ сверху */
+	  padding: 14px 60px; /* Увеличиваем размер кнопки для длины */
+	  background: linear-gradient(135deg, #522e7c, #6a47d3, #522e7c); /* Градиент с использованием цвета #522E7C */
+	  color: white;
+	  border: none;
+	  border-radius: 50px; /* Закругленные углы */
+	  font-size: 18px; /* Увеличиваем шрифт для лучшего восприятия */
+	  cursor: pointer;
+	  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Тень для выделения кнопки */
+	  transition: background 0.3s ease, transform 0.3s ease; /* Плавные переходы */
+	  opacity: 0.7; /* Делаем кнопку немного прозрачной */
+	  position: relative; /* Добавляем относительное позиционирование для сдвига */
+	 
+	}
+
+	/* Эффект при наведении на кнопку */
+	.romantic-button:hover {
+	  background: linear-gradient(135deg, #6a47d3, #522e7c, #6a47d3); /* Изменение градиента при наведении */
+	  transform: scale(1.05); /* Легкое увеличение кнопки при наведении */
+	}
+
+	/* Снимаем контур при фокусе */
+	.romantic-button:focus {
+	  outline: none;
+	}
+
+/* ======================== Модальное окно "Узнать судьбу" ======================== */
+
+	/* Модальное окно */
+	.modalDestiny {
+	  display: none; /* Скрыто по умолчанию */
+	  position: fixed;
+	  z-index: 1; /* Оно будет поверх остальных элементов */
+	  left: 0;
+	  top: 0;
+	  width: 100%;
+	  height: 100%;
+	  justify-content: center;
+	  align-items: center;
+	  text-align: center;
+	  padding-top: 50px;
+	  opacity: 0; /* Начальная невидимость */
+	  animation: fadeIn 0.6s forwards; /* Плавное появление окна */
+	  background-color: rgba(0, 0, 0, 0); /* Убираем полупрозрачный фон */
+	}
+
+	/* Эффект появления окна */
+	@keyframes fadeIn {
+	  0% {
+		opacity: 0;
+		transform: scale(0.7); /* Окно появляется маленьким */
+	  }
+	  100% {
+		opacity: 1;
+		transform: scale(1); /* Окно становится нормальным */
+	  }
+	}
+
+	/* Содержание модального окна */
+	.modalDestiny-content {
+	  background: linear-gradient(135deg, #522e7c, #6a47d3); /* Градиент как у кнопки */
+	  margin: auto;
+	  padding: 25px; /* Увеличиваем отступы */
+	  border: 1px solid #888;
+	  width: 90%; /* Ширина чуть больше */
+	  max-width: 400px; /* Увеличиваем максимальную ширину */
+	  border-radius: 10px;
+	  text-align: center;
+	  position: relative;
+	  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Тень для окна */
+	  animation: shineEffect 2s infinite alternate; /* Переливание */
+	  color: white; /* Делаем текст белым */
+	}
+
+	/* Эффект переливания содержимого */
+	@keyframes shineEffect {
+	  0% {
+		background: linear-gradient(135deg, #522e7c, #6a47d3);
+	  }
+	  100% {
+		background: linear-gradient(135deg, #6a47d3, #522e7c);
+	  }
+	}
+
+	/* Кнопка закрытия */
+	.closeDestiny {
+	  color: #fff;
+	  font-size: 30px;
+	  font-weight: bold;
+	  position: absolute;
+	  top: 10px;
+	  right: 10px;
+	  cursor: pointer;
+	  transition: transform 0.3s ease;
+	}
+
+	.closeDestiny:hover,
+	.closeDestiny:focus {
+	  color: #f1f1f1;
+	  transform: scale(1.1); /* Увеличиваем кнопку при наведении */
+	}
+
+	/* Добавление эффекта звездочек */
+	.modalDestiny .stars {
+	  position: absolute;
+	  top: -20px;
+	  left: -20px;
+	  right: -20px;
+	  bottom: -20px;
+	  pointer-events: none;
+	  z-index: -1;
+	}
+
+	.stars::before {
+	  content: "";
+	  position: absolute;
+	  width: 100%;
+	  height: 100%;
+	  background: url('stars.png') repeat;
+	  animation: starBurst 1.5s infinite;
+	}
+
+	/* Эффект появления звезд */
+	@keyframes starBurst {
+	  0% {
+		transform: scale(1);
+		opacity: 0.5;
+	  }
+	  100% {
+		transform: scale(1.2);
+		opacity: 1;
+	  }
+	}
+	
+	/* ======================== Мобильная верстка ======================== */
+
+/* Для мобильных устройств (ширина экрана до 768px) */
+@media screen and (max-width: 768px) {
+  
+  /* Видео */
+  .video-background video {
+    object-fit: cover;
+    height: auto; /* Убираем растяжение по высоте */
+    width: 100%; /* Видео будет растягиваться по ширине */
+  }
+
+  /* Контейнер для колеса */
+  .wheel-container {
+    top: 45%; /* Смещаем колесо немного выше */
+    left: 50%; /* Центрируем по горизонтали */
+    width: 80%; /* Колесо занимает 80% ширины экрана */
+    height: auto; /* Уменьшаем высоту */
+    transform: translate(-50%, -45%);
+  }
+
+  /* Стрелка */
+  .arrow {
+    top: 50%;
+    left: 50%; /* Центрируем стрелку */
+    transform: translateY(-50%) rotate(360deg); /* Поворот стрелки */
+    width: 80px; /* Уменьшаем размер стрелки */
+    height: 40px;
+    left: 50%;
+    margin-left: -40px; /* Центрируем стрелку по горизонтали */
+  }
+
+  /* Кнопки */
+  .spin-button,
+  .romantic-button {
+    padding: 12px 30px; /* Уменьшаем размер кнопок */
+    font-size: 16px; /* Уменьшаем шрифт */
+    width: 80%; /* Кнопки занимают большую часть экрана */
+  }
+
+  /* Модальное окно */
+  .modalfortyna-content,
+  .modalDestiny-content {
+    width: 80%;
+    max-width: 350px; /* Уменьшаем максимальную ширину */
+    padding: 20px; /* Уменьшаем отступы */
+  }
+
+  /* Текст */
+  .text-container {
+    top: 40%; /* Уменьшаем высоту расположения текста */
+    left: 5%; /* Смещаем текст влево */
+    width: 90%; /* Уменьшаем ширину блока текста */
+    font-size: 18px; /* Уменьшаем размер шрифта */
+  }
+
+  .text-container h1 {
+    font-size: 30px; /* Уменьшаем размер шрифта заголовка */
+    letter-spacing: 1px; /* Уменьшаем расстояние между буквами */
+  }
+
+  /* Карточка с текстом */
+  .card {
+    padding: 150px 20px; /* Уменьшаем отступы */
+    width: 80%; /* Карточка занимает большую часть экрана */
+    max-width: 350px; /* Уменьшаем максимальную ширину */
+  }
+}
+
+/* Для очень маленьких экранов (мобильные телефоны до 480px) */
+@media screen and (max-width: 480px) {
+
+  .wheel-container {
+    width: 70%; /* Уменьшаем колеса */
+    height: auto;
+  }
+
+  .arrow {
+    width: 60px; /* Уменьшаем стрелку */
+    height: 30px;
+  }
+
+  .spin-button,
+  .romantic-button {
+    padding: 10px 25px; /* Уменьшаем размер кнопок */
+    font-size: 14px; /* Уменьшаем шрифт */
+  }
+
+  .text-container {
+    font-size: 16px; /* Уменьшаем шрифт */
+  }
+
+  .text-container h1 {
+    font-size: 24px; /* Уменьшаем размер заголовка */
+  }
+
+  .card {
+    padding: 120px 10px; /* Уменьшаем отступы */
+    width: 90%;
+  }
+
+  /* Уменьшаем ширину и высоту для модальных окон */
+  .modalfortyna-content,
+  .modalDestiny-content {
+    width: 90%;
+    max-width: 300px; /* Уменьшаем максимальную ширину */
+    padding: 15px; /* Уменьшаем отступы */
+  }
+}
+
   </style>
 </head>
 
 <body>
 
-	<!-- Video background -->
+    <!-- Video background -->
 	<div class="video-background">
 		<video autoplay muted loop id="video-background">
-		  <source src="C:\Users\user\Desktop\14февраля\image\Фон.mp4" type="video/mp4">
+		  <source src="file:///C:/Users/Roman/Desktop/тест/images/видеоклас.mp4" type="video/mp4">
 		</video>
 	</div>
 
-	<!-- Прозрачный градиентный фон поверх видео -->
-	<div class="overlay"></div>
-
-	<div class="card"> 
+    <!-- Прозрачный градиентный фон поверх видео -->
+    <div class="overlay"></div>
+	<div class="card">
 		<!-- Контейнер для текста слева от колеса -->
 		<div class="text-container">
 		  <h1>Звезды приготовили для тебя особое послание...</h1>
-		  <p>Звезды приготовили для тебя особое послание на этот день. Поверни колесо судьбы, чтобы узнать свою совместимость, а затем открой свой астрологический прогноз на 14 февраля.</p>
-		  
+		  <p>Сегодняшний день полон мистических знаков, и Вселенная хочет раскрыть тебе свою тайну. Поверни колесо судьбы, чтобы узнать свою совместимость, а затем открой личное пророчество на 14 февраля.</p>
+		  <p> Что сулят тебе звёзды? Узнай прямо сейчас!</p> 
 		  <!-- Кнопка для романтичного послания -->
-		  <button class="romantic-button" id="romanticButton">Узнать судьбу</button>
+		  <button class="romantic-button" id="romanticButton">Открыть послание Вселенной</button>
 		</div>
 
 		<!-- Контейнер для колеса -->
 		<div class="wheel-container">
-		  <!-- Стрелка (заменена на стилизованный элемент с использованием CSS) -->
-		  <div class="arrow"></div>
+		  <!-- Квадраты свечения, которые не будут крутиться -->
+		  <div class="glow-box" id="firstElement"></div>
+		  <div class="glow-box2" id="secondElement"></div>
+
+		  <!-- Стрелка (используем изображение) -->
+		  <img class="arrow" src="file:///C:/Users/Roman/Desktop/тест/мой/стрелка.png" alt="Стрелка" width="40" height="60">
 
 		  <!-- Загружаем PNG как изображение -->
-		  <img id="zodiacWheel" src="file:///C:/Users/Roman/Desktop/тест/мой/кругбезфона2.png" alt="Зодиакальное колесо" width="500" height="500">
+		  <img id="zodiacWheel" src="file:///C:/Users/Roman/Desktop/тест/мой/кругсветлее.png" alt="Зодиакальное колесо" width="500" height="500">
 
 		  <!-- Кнопка для вращения колеса -->
-		  <button class="spin-button" id="spinButton">Крутить колесо</button>
+		  <button class="spin-button" id="spinButton">Повернуть колесо судьбы</button>
+		</div>
+
+		<!-- Модальное окно колеса фортуны -->
+		<div id="modalfortyna" class="modalfortyna">
+		  <div class="modalfortyna-content">
+			<span class="closemodalfortyna" id="closemodalfortyna">&times;</span>
+			<h2>Идеальная совместимость!</h2>
+			<p id="modalContent">Текст предсказания будет здесь</p>
+		  </div>
 		</div>
 	</div>
+	
+	
+	
+	
+	
+	
 
-	<!-- Модальное окно с полупрозрачным фоном -->
-	<div id="modal" class="modal">
-	  <div class="modal-content">
-		<span class="close" id="closeModal">&times;</span>
-		<p>Примет мир</p>
+	<!-- Модальное окно "Узнать судьбу" -->
+	<div id="modalDestiny" class="modalDestiny">
+	  <div class="modalDestiny-content">
+		<span class="closeDestiny" id="closeDestiny">&times;</span>
+		<h2>Ты готов узнать своё пророчество?</h2>
+		<p id="modalContentDestiny">Ты – мой свет, мой самый родной человек. С того самого момента, как ты вошёл в мою жизнь, всё стало другим – теплее, ярче, волшебнее. Ты как магия, которую не объяснить словами, но которую чувствуешь каждой клеточкой.
+
+Мне не нужны звёзды, чтобы узнать судьбу, потому что она уже случилась – это ты. Ты — тот, кто обнимает мою душу своей любовью и заботой, кто просто есть рядом, и этого достаточно, чтобы я была счастлива.
+
+Я знаю, что впереди у нас только лучшее, потому что вместе с тобой любое будущее кажется идеальным. И если где-то там, в бескрайнем космосе, и есть пророчество, то оно одно: ты и я – это навсегда.</p>
 	  </div>
 	</div>
 
 
+
+
+
+
+
+
+
+
+
+
   <script>
-    // Получаем элементы
-    const wheel = document.getElementById('zodiacWheel');
-    const spinButton = document.getElementById('spinButton');
+  
+ // Получаем элементы
+const wheel = document.getElementById('zodiacWheel');
+const spinButton = document.getElementById('spinButton');
+const modalfortyna = document.getElementById('modalfortyna');
+const closeModalfortyna = document.getElementById('closemodalfortyna');
+const modalContent = document.getElementById('modalContent'); // Для вставки текста в модальное окно
 
-    // Угол для Козерога (345°)
-    const targetDegree = 345;
+// Массив предсказаний
+const predictions = [
+  "Колесо фортуны врать не станет... Похоже, звезды сегодня шепчут, что твоя идеальная пара — Козерог. Кто именно, интересно?",
+  "Ого, как интересно! Звезды говорят: эта пара обречена на успех.",
+  "Звезды шепчут, что эта пара будет сиять. Их совместимость — настоящая магия!",
+  "Хм, вы явно притягиваете чье-то внимание.",
+  "Вот это да! Звезды будто бы суют тебе кого-то...",
+  "Ого, как интересно! Судьба явно подкидывает тебе кого-то, с кем ты можешь не только поговорить о великих делах, но и разделить приятные вечера.",
+  "Кто бы это мог быть?",
+  "Кажется, это не случайность, а просто звездное совпадение.",
+  "Ого, какая-то звезда вам подмигивает!",
+  "Похоже, звезды снова шуточки шутят.",
+  "Дева и Козерог — союз, который создан звездами.",
+  "Колесо фортуны шепчет: похоже, ты и этот знак — идеальное сочетание! Ваши звезды так прекрасно переплетаются, что на этот союз просто не может не светить удача.",
+  "Ого, как интересно! Звезды говорят: Козерог и Дева — отличная пара.",
+  "Ого, похоже, какой-то Козерог совсем не может представить свою жизнь без тебя!",
+  "Вот это да! Какой-то Козерог прямо сейчас думает о тебе...",
+  "Похоже, какой-то Козерог абсолютно не может оторвать взгляд от тебя.",
+  "Вот это совпадение! Какому-то Козерогу ты сильно приглянулся, а он, похоже, даже не знает, как быть с этим фатальным влечением.",
+  "Похоже, какой-то Козерог сейчас точно теряет голову. Ну как тут не потеряться, когда такой человек рядом?",
+  "Похоже, какой-то Козерог очень сильно тебя любит!",
+  "Ого! Звезды подсказывают, что какой-то Козерог теперь знает, каково это — думать о тебе по ночам.",
+  "Какой-то Козерог без твоего внимания прямо как без компаса — теряется в своих чувствах. Но звезды подсказывают, что это только начало большой истории!"
+];
 
-    // Устанавливаем начальное положение колеса на 345° (Козерог)
-    wheel.style.transform = `rotate(${targetDegree}deg)`; // Начальный угол - 345°
 
-    // Логика для вращения колеса
-    spinButton.addEventListener('click', function() {
-      // Генерация случайного вращения от -720 до 720 градусов (крутится в обе стороны)
-      let randomRotation = Math.floor(Math.random() * 1440) - 720; // Вращение от -720° до +720°
+// Угол для Козерога (345°)
+const targetDegree = 345;
 
-      // Вращаем колесо случайно
-      wheel.style.transform = `rotate(${targetDegree + randomRotation}deg)`;
+// Устанавливаем начальное положение колеса на 345° (Козерог)
+wheel.style.transform = `rotate(${targetDegree}deg)`; // Начальный угол - 345°
 
-      // Подгоняем, чтобы колесо всегда встало на 345° (Козерог)
-      setTimeout(() => {
-        // Подгоняем так, чтобы всегда завершать на 345° (Козерог)
-        wheel.style.transform = `rotate(${targetDegree}deg)`;
-      }, 4000); // Колесо крутится 4 секунды
-    });
+let isSpinning = false;
+
+// Логика для вращения колеса
+spinButton.addEventListener('click', function() {
+
+  if (isSpinning) return; // Чтобы предотвратить повторные клики во время вращения
+  isSpinning = true;
+
+  // Генерация случайного вращения от -720 до 720 градусов (крутится в обе стороны)
+  let randomRotation = Math.floor(Math.random() * 1440) - 720; // Вращение от -720° до +720°
+
+  // Вращаем колесо случайно
+  wheel.style.transition = "transform 4s ease-out"; // Добавляем плавное вращение
+  wheel.style.transform = `rotate(${targetDegree + randomRotation}deg)`;
+
+  // Ждем окончания вращения, затем подгоняем колесо на Козерога и показываем модальное окно
+  setTimeout(() => {
+    // Подгоняем, чтобы всегда завершать на 345° (Козерог)
+    wheel.style.transition = "transform 1s ease-out"; // Плавное завершение вращения
+    wheel.style.transform = `rotate(${targetDegree}deg)`;
+
+    // Выбираем случайное предсказание из массива
+    const randomPrediction = predictions[Math.floor(Math.random() * predictions.length)];
+
+    // Вставляем выбранное предсказание в модальное окно
+    modalContent.textContent = randomPrediction;
+
+    // Показываем модальное окно после завершения вращения
+    setTimeout(() => {
+      modalfortyna.style.display = "flex"; // Показываем модальное окно
+    }, 1500); // Ждем еще 1 секунду, чтобы колесо остановилось на месте
+
+  }, 4000); // Колесо крутится 4 секунды
+
+  // Делаем кнопку "Крутить" неактивной, пока колесо крутится
+  spinButton.disabled = true;
+
+  // Снимаем блокировку кнопки и состояние вращения через 5 секунд
+  setTimeout(() => {
+    spinButton.disabled = false;
+    isSpinning = false;
+  }, 5000); // Разблокировать кнопку через 5 секунд
+});
+
+// Закрытие модального окна
+closeModalfortyna.addEventListener('click', function() {
+  modalfortyna.style.display = "none"; // Скрыть модальное окно
+});
+
+
 	
-	// Получаем элементы
-	const romanticButton = document.getElementById('romanticButton');
-	const modal = document.getElementById('modal');
-	const closeModal = document.getElementById('closeModal');
+/* ======================== Модальное окно предсказания ======================== */
+// Получаем элементы
+const romanticButton = document.getElementById('romanticButton');
+const modalDestiny = document.getElementById('modalDestiny');
+const closeDestiny = document.getElementById('closeDestiny');
 
-	// Открытие модального окна при нажатии на кнопку
-	romanticButton.addEventListener('click', () => {
-	  modal.style.display = 'flex'; // Показываем модальное окно
-	});
+// Открытие модального окна при нажатии на кнопку
+romanticButton.addEventListener('click', () => {
+  modalDestiny.style.display = 'flex'; // Показываем модальное окно
+});
 
-	// Закрытие модального окна при нажатии на крестик
-	closeModal.addEventListener('click', () => {
-	  modal.style.display = 'none'; // Скрываем модальное окно
-	});
+// Закрытие модального окна при нажатии на крестик
+closeDestiny.addEventListener('click', () => {
+  modalDestiny.style.display = 'none'; // Скрываем модальное окно
+});
 
-	// Закрытие модального окна при клике вне окна
-	window.addEventListener('click', (event) => {
-	  if (event.target === modal) {
-		modal.style.display = 'none';
-	  }
-	});
+// Закрытие модального окна при клике вне окна
+window.addEventListener('click', (event) => {
+  if (event.target === modalDestiny) {
+    modalDestiny.style.display = 'none';
+  }
+});
+
 
 
   </script>
