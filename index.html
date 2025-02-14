@@ -51,65 +51,76 @@ body, html {
 }
 
 
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  }
+}
+
+@keyframes spinGlow {
+  0% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 50px rgba(255, 255, 255, 1);
+  }
+}
+
 /* ======================== Колесо фортуны ======================== */
-	/* Стиль для контейнера колеса */
-	.wheel-container {
-	  position: absolute;
-	  top: 50%; /* Позиционируем контейнер по вертикали в центре */
-	  left: 75%; /* Смещаем контейнер вправо (чем больше число, тем дальше вправо) */
-	  transform: translate(-50%, -50%); /* Центрируем контейнер относительно его собственного центра */
-	  width: 400px; /* Уменьшаем ширину колеса */
-	  height: 400px; /* Уменьшаем высоту колеса */
-	  display: flex;
-	  flex-direction: column; /* Размещение элементов вертикально */
-	  justify-content: center;
-	}
+/* Стиль для контейнера колеса */
+.wheel-container {
+  position: absolute;
+  top: 50%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
-	/* Стили для изображения колеса */
-	#zodiacWheel {
-	  width: 100%; /* Колесо теперь будет занимать 100% от ширины контейнера */
-	  height: 100%; /* Колесо теперь будет занимать 100% от высоты контейнера */
-	  transform-origin: center center; /* Центр вращения */
-	  transition: transform 4s ease-out; /* Плавное вращение */
-	  transition: transform 4s ease-out, box-shadow 1s ease-in-out; /* Плавное вращение и тень */
-	   box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Легкое свечение вокруг колеса */
-	   z-index: -3; /* Свечение будет позади колеса */
-	}
+/* Стили для изображения колеса */
+#zodiacWheel {
+  width: 100%;
+  height: 100%;
+  transform-origin: center center;
+  transition: transform 4s ease-out, box-shadow 1s ease-in-out;
+  animation: glow 2s infinite alternate; /* Добавляем анимацию сияния */
+  z-index: -3;
+}
 
-	/* Эффект вращения при клике */
-	#zodiacWheel.spin {
-	  transform: rotate(360deg); /* Вращение колеса */
-	  box-shadow: 0 0 40px rgba(255, 255, 255, 1); /* Увеличиваем свечение при вращении */
-	}
+/* Эффект вращения при клике */
+#zodiacWheel.spin {
+  transform: rotate(360deg);
+  animation: spinGlow 1s forwards; /* Усиливаем свечение при вращении */
+}
 
-	/* Стили для свечений */
-	.glow-box {
-	  position: absolute;
-	  top: 41%; /* Позиционируем контейнер по вертикали в центре */
-	  left: 50%; /* Смещаем контейнер вправо (чем больше число, тем дальше вправо) */
-	  transform: translate(-50%, -50%); /* Центрируем контейнер относительно его собственного центра */
-	  width: 400px; /* Уменьшаем ширину колеса */
-	  height: 400px; /* Уменьшаем высоту колеса */
-	  background-color: transparent; /* Убираем заливку */
-	  border-radius: 5px; /* Скругленные углы */
-	  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Легкое свечение */
-	  z-index: -1; /* Свечение будет позади колеса */
-	  
-	}
+/* Стили для свечений */
+.glow-box,
+.glow-box2 {
+  position: absolute;
+  top: 41%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+  background-color: transparent;
+  border-radius: 5px;
+  animation: glow 2s infinite alternate; /* Делаем эффект пульсирующего сияния */
+  z-index: -1;
+}
 
-	.glow-box2 {
-	  position: absolute;
-	  top: 41%; /* Позиционируем контейнер по вертикали в центре */
-	  left: 50%; /* Смещаем контейнер вправо (чем больше число, тем дальше вправо) */
-	  transform: translate(-50%, -50%) rotate(50deg); /* Центрируем и наклоняем на 15 градусов */
-	  width: 400px; /* Уменьшаем ширину колеса */
-	  height: 400px; /* Уменьшаем высоту колеса */
-	  background-color: transparent; /* Убираем заливку */
-	  border-radius: 5px; /* Скругленные углы */
-	  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Легкое свечение */
-	  z-index: -1; /* Свечение будет позади колеса */
-	  
-	}
+/* Дополнительный наклон для второго свечения */
+.glow-box2 {
+  transform: translate(-50%, -50%) rotate(50deg);
+}
 
 /* ======================== Стрелка ======================== */
 
