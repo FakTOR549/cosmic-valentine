@@ -578,12 +578,16 @@ body, html {
 <body>
 
     <!-- Video background -->
-	<div class="video-background">
-		<video autoplay muted loop id="video-background">
-		  <source src="Фон.mp4" type="video/mp4">
-		</video>
-	</div>
+   <div class="video-background">
+	<video autoplay muted loop id="video-background">
+		<source src="Фон.mp4" type="video/mp4">
+	</video>
+   </div>
 
+   <audio id="background-music" loop>
+        <source src="ФоноваяМузыка.mp3" type="audio/mp3">
+   </audio>
+	
     <!-- Прозрачный градиентный фон поверх видео -->
     <div class="overlay"></div>
 	<div class="card">
@@ -767,9 +771,19 @@ window.addEventListener('click', (event) => {
   }
 });
 
+/* ======================== Музыка ======================== */
+ document.addEventListener("DOMContentLoaded", function () {
+    const audio = document.getElementById("background-music");
 
+    function playMusic() {
+      audio.play().catch(error => console.log("Автозапуск аудио заблокирован"));
+      document.removeEventListener("click", playMusic); // Убираем обработчик после первого клика
+    }
 
+    document.addEventListener("click", playMusic);
+  });
+	  
   </script>
-
+ 
 </body>
 </html>
