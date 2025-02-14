@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <title>Астрологическое предсказание на 14 февраля</title>
+  <title>Астрологическое предсказание</title>
   <style>
 /* ======================== Общие стили для страницы ======================== */
 
@@ -462,115 +462,6 @@ body, html {
 	  }
 	}
 	
-	/* ======================== Мобильная верстка ======================== */
-
-/* Для мобильных устройств (ширина экрана до 768px) */
-@media screen and (max-width: 768px) {
-  
-  /* Видео */
-  .video-background video {
-    object-fit: cover;
-    height: auto; /* Убираем растяжение по высоте */
-    width: 100%; /* Видео будет растягиваться по ширине */
-  }
-
-  /* Контейнер для колеса */
-  .wheel-container {
-    top: 45%; /* Смещаем колесо немного выше */
-    left: 50%; /* Центрируем по горизонтали */
-    width: 80%; /* Колесо занимает 80% ширины экрана */
-    height: auto; /* Уменьшаем высоту */
-    transform: translate(-50%, -45%);
-  }
-
-  /* Стрелка */
-  .arrow {
-    top: 50%;
-    left: 50%; /* Центрируем стрелку */
-    transform: translateY(-50%) rotate(360deg); /* Поворот стрелки */
-    width: 80px; /* Уменьшаем размер стрелки */
-    height: 40px;
-    left: 50%;
-    margin-left: -40px; /* Центрируем стрелку по горизонтали */
-  }
-
-  /* Кнопки */
-  .spin-button,
-  .romantic-button {
-    padding: 12px 30px; /* Уменьшаем размер кнопок */
-    font-size: 16px; /* Уменьшаем шрифт */
-    width: 80%; /* Кнопки занимают большую часть экрана */
-  }
-
-  /* Модальное окно */
-  .modalfortyna-content,
-  .modalDestiny-content {
-    width: 80%;
-    max-width: 350px; /* Уменьшаем максимальную ширину */
-    padding: 20px; /* Уменьшаем отступы */
-  }
-
-  /* Текст */
-  .text-container {
-    top: 40%; /* Уменьшаем высоту расположения текста */
-    left: 5%; /* Смещаем текст влево */
-    width: 90%; /* Уменьшаем ширину блока текста */
-    font-size: 18px; /* Уменьшаем размер шрифта */
-  }
-
-  .text-container h1 {
-    font-size: 30px; /* Уменьшаем размер шрифта заголовка */
-    letter-spacing: 1px; /* Уменьшаем расстояние между буквами */
-  }
-
-  /* Карточка с текстом */
-  .card {
-    padding: 150px 20px; /* Уменьшаем отступы */
-    width: 80%; /* Карточка занимает большую часть экрана */
-    max-width: 350px; /* Уменьшаем максимальную ширину */
-  }
-}
-
-/* Для очень маленьких экранов (мобильные телефоны до 480px) */
-@media screen and (max-width: 480px) {
-
-  .wheel-container {
-    width: 70%; /* Уменьшаем колеса */
-    height: auto;
-  }
-
-  .arrow {
-    width: 60px; /* Уменьшаем стрелку */
-    height: 30px;
-  }
-
-  .spin-button,
-  .romantic-button {
-    padding: 10px 25px; /* Уменьшаем размер кнопок */
-    font-size: 14px; /* Уменьшаем шрифт */
-  }
-
-  .text-container {
-    font-size: 16px; /* Уменьшаем шрифт */
-  }
-
-  .text-container h1 {
-    font-size: 24px; /* Уменьшаем размер заголовка */
-  }
-
-  .card {
-    padding: 120px 10px; /* Уменьшаем отступы */
-    width: 90%;
-  }
-
-  /* Уменьшаем ширину и высоту для модальных окон */
-  .modalfortyna-content,
-  .modalDestiny-content {
-    width: 90%;
-    max-width: 300px; /* Уменьшаем максимальную ширину */
-    padding: 15px; /* Уменьшаем отступы */
-  }
-}
 
   </style>
 </head>
@@ -578,11 +469,26 @@ body, html {
 <body>
 
     <!-- Video background -->
+<<<<<<< Updated upstream
    <div class="video-background">
 	<video autoplay muted loop id="video-background">
 		<source src="Фон.mp4" type="video/mp4">
 	</video>
    </div>
+=======
+	<div class="video-background">
+		<video autoplay muted loop id="video-background">
+		  <source src="Фон.mp4" type="video/mp4">
+		</video>
+	</div>
+	<audio id="background-music" loop>
+        <source src="ФоноваяМузыка.mp3" type="audio/mp3">
+    </audio>
+		<!-- Звук клика -->
+	<audio id="click-sound">
+		<source src="ЗвукКлик.mp3" type="audio/mp3">
+	</audio>
+>>>>>>> Stashed changes
 
    <audio id="background-music" loop>
         <source src="ФоноваяМузыка.mp3" type="audio/mp3">
@@ -592,10 +498,10 @@ body, html {
     <div class="overlay"></div>
 	<div class="card">
 		<!-- Контейнер для текста слева от колеса -->
-		<div class="text-container">
+			<div class="text-container">
 		  <h1>Звезды приготовили для тебя особое послание...</h1>
-		  <p>Сегодняшний день полон мистических знаков, и Вселенная хочет раскрыть тебе свою тайну. Поверни колесо судьбы, чтобы узнать свою совместимость, а затем открой личное пророчество на 14 февраля.</p>
-		  <p> Что сулят тебе звёзды? Узнай прямо сейчас!</p> 
+		  <p>Звезды шепчут тебе о том, что Вселенная готова раскрыть свою тайну. Поверни колесо судьбы, чтобы узнать свою совместимость, а затем открой личное пророчество.</p>
+		  <p> Что сулят тебе звезды? Узнай прямо сейчас!</p> 
 		  <!-- Кнопка для романтичного послания -->
 		  <button class="romantic-button" id="romanticButton">Открыть послание Вселенной</button>
 		</div>
@@ -614,6 +520,7 @@ body, html {
 
 		  <!-- Кнопка для вращения колеса -->
 		  <button class="spin-button" id="spinButton">Повернуть колесо судьбы</button>
+		  
 		</div>
 
 		<!-- Модальное окно колеса фортуны -->
@@ -632,18 +539,23 @@ body, html {
 	
 	
 
-	<!-- Модальное окно "Узнать судьбу" -->
+<!-- Модальное окно "Узнать судьбу" -->
 	<div id="modalDestiny" class="modalDestiny">
 	  <div class="modalDestiny-content">
 		<span class="closeDestiny" id="closeDestiny">&times;</span>
 		<h2>Ты готов узнать своё пророчество?</h2>
-		<p id="modalContentDestiny">Ты – мой свет, мой самый родной человек. С того самого момента, как ты вошёл в мою жизнь, всё стало другим – теплее, ярче, волшебнее. Ты как магия, которую не объяснить словами, но которую чувствуешь каждой клеточкой.
+		<p id="modalContentDestiny">Пророчество говорит о том, что в ближайшее время кто-то из Козерогов захочет крепко обнять вас. Кажется, это человек, который очень сильно вас любит и невероятно благодарен за всё, что вы для него делаете. Этот человек благодарит Звезды за такой удивительный подарок, как вы. 
 
-Мне не нужны звёзды, чтобы узнать судьбу, потому что она уже случилась – это ты. Ты — тот, кто обнимает мою душу своей любовью и заботой, кто просто есть рядом, и этого достаточно, чтобы я была счастлива.
+Будьте уверены, ваше будущее уже связано. Вас ждёт гармония и счастье, а с каждым днем ваша жизнь будет становиться только ярче. Любовь этого человека к вам никогда не иссякнет, и вам и ему рядом друг с другом будет всегда невероятно комфортно и спокойно. Всё, что нужно, чтобы быть счастливым и с каждым моментом это становится ещё более очевидным.
 
-Я знаю, что впереди у нас только лучшее, потому что вместе с тобой любое будущее кажется идеальным. И если где-то там, в бескрайнем космосе, и есть пророчество, то оно одно: ты и я – это навсегда.</p>
+Каждый вечер кто-то будет думать только о вас. Ваше великолепное присутствие оставляют незабываемое впечатление. Ваши прикосновения заставляют ее сердце биться быстрее, а мысли о вас не покидают ее ни на минуту. Это человек, чья любовь к вам с каждым днём становится всё сильнее.</p>
+
 	  </div>
 	</div>
+
+	<!-- Звук набора текста -->
+	<audio id="typingSound" src="C:\Users\user\Documents\GitHub\cosmic-valentine\ЗвукБыстройПечати.mp3" preload="auto" loop></audio>
+
 
 
 
@@ -748,21 +660,84 @@ closeModalfortyna.addEventListener('click', function() {
 
 
 	
-/* ======================== Модальное окно предсказания ======================== */
-// Получаем элементы
-const romanticButton = document.getElementById('romanticButton');
-const modalDestiny = document.getElementById('modalDestiny');
-const closeDestiny = document.getElementById('closeDestiny');
+document.addEventListener("DOMContentLoaded", function () {
+    const romanticButton = document.getElementById('romanticButton');
+    const modalDestiny = document.getElementById('modalDestiny');
+    const closeDestiny = document.getElementById('closeDestiny');
+    const modalContentDestiny = document.getElementById('modalContentDestiny');
+    const fullText = modalContentDestiny.innerHTML; // Полный текст предсказания
+    let index = 0;
 
-// Открытие модального окна при нажатии на кнопку
-romanticButton.addEventListener('click', () => {
-  modalDestiny.style.display = 'flex'; // Показываем модальное окно
+    // Создаем аудиофайл для печати текста
+    const typingSound = document.getElementById("typingSound");
+
+    // Функция печати текста по буквам
+    function typeText() {
+        if (index < fullText.length) {
+            modalContentDestiny.innerHTML = fullText.substring(0, index + 1);
+            index++;
+            setTimeout(typeText, 25); // Скорость печати (меньше значение - быстрее печатает)
+        } else {
+            typingSound.pause(); // Останавливаем звук, когда печать закончилась
+        }
+    }
+
+    // Открытие модального окна при нажатии на кнопку
+    romanticButton.addEventListener('click', () => {
+        modalDestiny.style.display = 'flex'; // Показываем модальное окно
+        modalContentDestiny.innerHTML = ''; // Очищаем текст перед печатью
+        index = 0; // Сбрасываем индекс
+
+        // Запускаем звук печати с повторением при необходимости
+        typingSound.currentTime = 0;
+        typingSound.play().catch(error => console.log("Ошибка воспроизведения звука:", error));
+
+        setTimeout(typeText, 500); // Небольшая задержка перед началом печати
+    });
+
+    // Закрытие модального окна при нажатии на крестик
+    closeDestiny.addEventListener('click', () => {
+        modalDestiny.style.display = 'none'; // Скрываем модальное окно
+        typingSound.pause(); // Останавливаем звук при закрытии
+    });
+
+    // Закрытие модального окна при клике вне окна
+    window.addEventListener('click', (event) => {
+        if (event.target === modalDestiny) {
+            modalDestiny.style.display = 'none';
+            typingSound.pause(); // Останавливаем звук при закрытии
+        }
+    });
 });
 
-// Закрытие модального окна при нажатии на крестик
-closeDestiny.addEventListener('click', () => {
-  modalDestiny.style.display = 'none'; // Скрываем модальное окно
+/* ======================== Музыка ======================== */
+document.addEventListener("DOMContentLoaded", function () {
+       const backgroundMusic = document.getElementById("background-music");
+    const clickSound = document.getElementById("click-sound");
+    const romanticButton = document.getElementById("romanticButton");
+    const spinButton = document.getElementById("spinButton");
+
+    function playMusic() {
+        if (backgroundMusic.paused) {
+            backgroundMusic.volume = 0.5; // Устанавливаем громкость на 50%
+            backgroundMusic.play().catch(error => console.log("Ошибка воспроизведения музыки:", error));
+        }
+        document.removeEventListener("click", playMusic); // Убираем обработчик после первого клика
+    }
+
+    function playClickSound() {
+        if (clickSound.paused) {
+            clickSound.currentTime = 0;
+            clickSound.play().catch(error => console.log("Ошибка воспроизведения клика:", error));
+        }
+    }
+
+    document.addEventListener("click", playMusic);
+
+    romanticButton.addEventListener("click", playClickSound);
+    spinButton.addEventListener("click", playClickSound);
 });
+<<<<<<< Updated upstream
 
 // Закрытие модального окна при клике вне окна
 window.addEventListener('click', (event) => {
@@ -782,6 +757,8 @@ window.addEventListener('click', (event) => {
 
     document.addEventListener("click", playMusic);
   });
+=======
+>>>>>>> Stashed changes
 	  
   </script>
  
