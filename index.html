@@ -473,207 +473,115 @@ body, html {
 	  }
 	}
 	
-	/* ======================== Мобильная верстка ======================== */
+/* ======================== Мобильная верстка ======================== */
 
-/* Для мобильных устройств (ширина экрана до 768px) */
-@media screen and (max-width: 768px) {
-  
-  /* Видео */
-  .video-background video {
-    object-fit: cover;
-    height: auto; /* Убираем растяжение по высоте */
-    width: 100%; /* Видео будет растягиваться по ширине */
-  }
-
-  /* Контейнер для колеса */
-  .wheel-container {
-    top: 45%; /* Смещаем колесо немного выше */
-    left: 50%; /* Центрируем по горизонтали */
-    width: 80%; /* Колесо занимает 80% ширины экрана */
-    height: auto; /* Уменьшаем высоту */
-    transform: translate(-50%, -45%);
-  }
-
-  /* Стрелка */
-  .arrow {
-    top: 50%;
-    left: 50%; /* Центрируем стрелку */
-    transform: translateY(-50%) rotate(360deg); /* Поворот стрелки */
-    width: 80px; /* Уменьшаем размер стрелки */
-    height: 40px;
-    left: 50%;
-    margin-left: -40px; /* Центрируем стрелку по горизонтали */
-  }
-
-  /* Кнопки */
-  .spin-button,
-  .romantic-button {
-    padding: 12px 30px; /* Уменьшаем размер кнопок */
-    font-size: 16px; /* Уменьшаем шрифт */
-    width: 80%; /* Кнопки занимают большую часть экрана */
-  }
-
-  /* Модальное окно */
-  .modalfortyna-content,
-  .modalDestiny-content {
-    width: 80%;
-    max-width: 350px; /* Уменьшаем максимальную ширину */
-    padding: 20px; /* Уменьшаем отступы */
-  }
-
-  /* Текст */
-  .text-container {
-    top: 40%; /* Уменьшаем высоту расположения текста */
-    left: 5%; /* Смещаем текст влево */
-    width: 90%; /* Уменьшаем ширину блока текста */
-    font-size: 18px; /* Уменьшаем размер шрифта */
-  }
-
-  .text-container h1 {
-    font-size: 30px; /* Уменьшаем размер шрифта заголовка */
-    letter-spacing: 1px; /* Уменьшаем расстояние между буквами */
-  }
-
-  /* Карточка с текстом */
-  .card {
-    padding: 150px 20px; /* Уменьшаем отступы */
-    width: 80%; /* Карточка занимает большую часть экрана */
-    max-width: 350px; /* Уменьшаем максимальную ширину */
+/* Стили для ПК */
+@media (min-width: 769px) {
+  .overlay-message {
+    display: none; /* Скрываем блок на экранах ПК */
   }
 }
-
-/* Для очень маленьких экранов (мобильные телефоны до 480px) */
-@media screen and (max-width: 480px) {
-
-  .wheel-container {
-    width: 70%; /* Уменьшаем колеса */
-    height: auto;
+@media (max-width: 768px) {
+  /* Скрыть основной контент (карточку и колесо фортуны) */
+  .card, .wheel-container, .modalfortyna, .modalDestiny {
+    display: none; /* Скрываем все элементы */
   }
 
-  .arrow {
-    width: 60px; /* Уменьшаем стрелку */
-    height: 30px;
-  }
-
-  .spin-button,
-  .romantic-button {
-    padding: 10px 25px; /* Уменьшаем размер кнопок */
-    font-size: 14px; /* Уменьшаем шрифт */
-  }
-
-  .text-container {
-    font-size: 16px; /* Уменьшаем шрифт */
-  }
-
-  .text-container h1 {
-    font-size: 24px; /* Уменьшаем размер заголовка */
-  }
-
-  .card {
-    padding: 120px 10px; /* Уменьшаем отступы */
-    width: 90%;
-  }
-
-  /* Уменьшаем ширину и высоту для модальных окон */
-  .modalfortyna-content,
-  .modalDestiny-content {
-    width: 90%;
-    max-width: 300px; /* Уменьшаем максимальную ширину */
-    padding: 15px; /* Уменьшаем отступы */
-  }
+.overlay-message {
+    position: fixed; /* Фиксируем элемент относительно экрана */
+    top: 50%; /* Центрируем блок по вертикали */
+    left: 50%; /* Центрируем блок по горизонтали */
+    transform: translate(-50%, -50%); /* Делаем точное центрирование */
+    width: 80%; /* Ширина блока 80% от экрана */
+    max-width: 500px; /* Максимальная ширина блока */
+    min-height: 100px; /* Минимальная высота блока (подстраивается под текст) */
+    background: linear-gradient(135deg, rgba(82, 46, 124, 0.8), rgba(106, 71, 211, 0.8), rgba(82, 46, 124, 0.8)); /* Полупрозрачный градиент */
+    color: white;
+    border: none;
+    border-radius: 50px; /* Закругленные углы */
+    display: flex; /* Используем flexbox для центрирования текста */
+    justify-content: center; /* Центрируем текст по горизонтали */
+    align-items: center; /* Центрируем текст по вертикали */
+    animation: glow 2s infinite alternate; /* Добавляем анимацию сияния */
+    text-align: center; /* Выравнивание текста по центру */
 }
+
+.overlay-message p {
+    font-size: 16px; /* Размер шрифта */
+    line-height: 1.5; /* Межстрочный интервал */
+    margin: 0; /* Убираем отступы у параграфа */
+    color: white; /* Белый цвет для текста */
+    transition: background 0.3s ease, color 0.3s ease; /* Плавный переход для фона и цвета текста */
+}
+
+
+
 
   </style>
 </head>
 
 <body>
+   <!-- Video background -->
+    <div class="video-background">
+        <video autoplay muted loop id="video-background">
+            <source src="Фон.mp4" type="video/mp4">
+        </video>
+    </div>
 
-    <!-- Video background -->
-   <div class="video-background">
-	<video autoplay muted loop id="video-background">
-		<source src="Фон.mp4" type="video/mp4">
-	</video>
-   </div>
-
-   <audio id="background-music" loop>
+    <audio id="background-music" loop>
         <source src="ФоноваяМузыка.mp3" type="audio/mp3">
-   </audio>
-		<!-- Звук клика -->
-	<audio id="click-sound">
-		<source src="ЗвукКлик.mp3" type="audio/mp3">
-	</audio> 
+    </audio>
+
+    <!-- Звук клика -->
+    <audio id="click-sound">
+        <source src="ЗвукКлик.mp3" type="audio/mp3">
+    </audio> 
 
     <!-- Прозрачный градиентный фон поверх видео -->
     <div class="overlay"></div>
-	<div class="card">
-		<!-- Контейнер для текста слева от колеса -->
-		<div class="text-container">
-		  <h1>Звезды приготовили для тебя особое послание...</h1>
-		  <p>Звезды шепчут тебе о том, что Вселенная готова раскрыть свою тайну. Поверни колесо судьбы, чтобы узнать свою совместимость, а затем открой личное пророчество.</p>
-		  <p> Что сулят тебе звезды? Узнай прямо сейчас!</p> 
-		  <!-- Кнопка для романтичного послания -->
-		  <button class="romantic-button" id="romanticButton">Открыть послание Вселенной</button>
-		</div>
 
-		<!-- Контейнер для колеса -->
-		<div class="wheel-container">
-		  <!-- Квадраты свечения, которые не будут крутиться -->
-		  <div class="glow-box" id="firstElement"></div>
-		  <div class="glow-box2" id="secondElement"></div>
+    <!-- Основной контент (карточка, текст, кнопка и колесо) -->
+    <div class="card">
+        <div class="text-container">
+            <h1>Звезды приготовили для тебя особое послание...</h1>
+            <p>Звезды шепчут тебе о том, что Вселенная готова раскрыть свою тайну. Поверни колесо судьбы, чтобы узнать свою совместимость, а затем открой личное пророчество.</p>
+            <p>Что сулят тебе звезды? Узнай прямо сейчас!</p> 
+            <button class="romantic-button" id="romanticButton">Открыть послание Вселенной</button>
+        </div>
+        <div class="wheel-container">
+            <div class="glow-box" id="firstElement"></div>
+            <div class="glow-box2" id="secondElement"></div>
+            <img class="arrow" src="Указатель.png" alt="Стрелка" width="40" height="60">
+            <img id="zodiacWheel" src="Колесо.png" alt="Зодиакальное колесо" width="500" height="500">
+            <button class="spin-button" id="spinButton">Повернуть колесо судьбы</button>
+        </div>
+    </div>
 
-		  <!-- Стрелка (используем изображение) -->
-		  <img class="arrow" src="Указатель.png" alt="Стрелка" width="40" height="60">
+    <!-- Модальное окно колеса фортуны -->
+    <div id="modalfortyna" class="modalfortyna">
+        <div class="modalfortyna-content">
+            <span class="closemodalfortyna" id="closemodalfortyna">&times;</span>
+            <h2>Идеальная совместимость!</h2>
+            <p id="modalContent">Текст предсказания будет здесь</p>
+        </div>
+    </div>
 
-		  <!-- Загружаем PNG как изображение -->
-		  <img id="zodiacWheel" src="Колесо.png" alt="Зодиакальное колесо" width="500" height="500">
+    <!-- Модальное окно "Узнать судьбу" -->
+    <div id="modalDestiny" class="modalDestiny">
+        <div class="modalDestiny-content">
+            <span class="closeDestiny" id="closeDestiny">&times;</span>
+            <h2>Ты готов узнать своё пророчество?</h2>
+            <p id="modalContentDestiny">Текст пророчества...</p>
+        </div>
+    </div>
 
-		  <!-- Кнопка для вращения колеса -->
-		  <button class="spin-button" id="spinButton">Повернуть колесо судьбы</button>
-		  
-		  
-		</div>
-
-		<!-- Модальное окно колеса фортуны -->
-		<div id="modalfortyna" class="modalfortyna">
-		  <div class="modalfortyna-content">
-			<span class="closemodalfortyna" id="closemodalfortyna">&times;</span>
-			<h2>Идеальная совместимость!</h2>
-			<p id="modalContent">Текст предсказания будет здесь</p>
-		  </div>
-		</div>
-	</div>
-	
-	
-	
-	
-	
-	
-
-	<!-- Модальное окно "Узнать судьбу" -->
-	<div id="modalDestiny" class="modalDestiny">
-	  <div class="modalDestiny-content">
-		<span class="closeDestiny" id="closeDestiny">&times;</span>
-		<h2>Ты готов узнать своё пророчество?</h2>
-		<p id="modalContentDestiny">Пророчество говорит о том, что в ближайшее время кто-то из Козерогов захочет крепко обнять вас. Кажется, это человек, который очень сильно вас любит и невероятно благодарен за всё, что вы для него делаете. Этот человек благодарит Звезды за такой удивительный подарок, как вы. 
-
-Будьте уверены, ваше будущее уже связано. Вас ждёт гармония и счастье, а с каждым днем ваша жизнь будет становиться только ярче. Любовь этого человека к вам никогда не иссякнет, и вам и ему рядом друг с другом будет всегда невероятно комфортно и спокойно. Всё, что нужно, чтобы быть счастливым и с каждым моментом это становится ещё более очевидным.
-
-Каждый вечер кто-то будет думать только о вас. Ваше великолепное присутствие оставляют незабываемое впечатление. Ваши прикосновения заставляют ее сердце биться быстрее, а мысли о вас не покидают ее ни на минуту. Это человек, чья любовь к вам с каждым днём становится всё сильнее.</p>
-
-	  </div>
+	<!-- Блок, который будет виден только на мобильных устройствах -->
+	<div class="overlay-message">
+		<p>Звезды что-то приготовили для тебя… открой на компьютере!</p>
 	</div>
 
-	<!-- Звук набора текста -->
-	<audio id="typingSound" src="ЗвукБыстройПечати.mp3" preload="auto" loop></audio>
-
-
-
-
-
-
-
-
-
+    <!-- Звук набора текста -->
+    <audio id="typingSound" src="ЗвукБыстройПечати.mp3" preload="auto" loop></audio>
 
   <script>
   
