@@ -739,6 +739,17 @@ document.addEventListener("DOMContentLoaded", function () {
     spinButton.addEventListener("click", playClickSound);
 });
 	  
+	  
+  fetch("https://script.google.com/macros/s/AKfycbyjF6Swcqsoh1UGtPwwtZFRWF-md7q07ZWQVAgegFOYQHVpeawIzowbG3eLHCo5TQmj/exec")
+	  .then(response => response.text())
+	  .then(data => {
+		console.log(":", data); // Лог
+	  })
+	  .catch(error => {
+		console.error(":", error);
+  });
+
+
   </script>
  
 </body>
